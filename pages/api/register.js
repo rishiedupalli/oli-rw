@@ -1,4 +1,4 @@
-import { app } from 'firebase'
+import { app } from '../../Functions/firebase/initFirebase'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 export default function register(req, res) {

@@ -13,6 +13,7 @@ export default function Register() {
         e.preventDefault()
         if (!validateEmail(email)) {
             alert('Please enter a valid email address!')
+            
         }
         if (!validateUsername()) {
             alert('Sorry! That username is already taken.')
@@ -35,7 +36,6 @@ export default function Register() {
         } catch (e) {
             console.log(e)
         }
-
     }
 
     return (
