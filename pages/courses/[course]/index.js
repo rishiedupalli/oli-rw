@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { findCorrespondingLessonDataIndex } from '../../../Functions/findCorrespondingLessonDataIndex'
+import { findCorrespondingLessonDataIndex } from '../../../Functions/helper/findCorrespondingLessonDataIndex'
 
 function Course({ courseData }) {
 
@@ -20,8 +20,17 @@ function Course({ courseData }) {
             </Head>
 
             <div>
-                
+                <h1>Lessons For {courseTitle}</h1>
+                <br />
+                <ul>
+                    {lessonData.map(lesson => {
+                        return (
+                            <li key={lesson.id}>{lesson.LessonTitle}</li>
+                        )
+                    })}
+                </ul>
             </div>
+
         </div>
     )
 }
@@ -31,6 +40,7 @@ export async function getStaticPaths() {
     const data = await response.json()
 
     const paths = data.map(course => {
+
         return {
             params: {
                 course: `${course.courseName}`
@@ -60,7 +70,5 @@ export async function getStaticProps(context) {
         },
     }
 }
-
-
 
 export default Course
