@@ -1,19 +1,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import SearchTable from '../components/filterTable'
-import styles from '../styles/Home.module.css'
+import SearchTable from '../../components/filterTable'
 
-export default function Home() {
+export default function CouresHome() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>The Open Learning Initiative</title>
         <meta name="description" content="Free Courses on Math, Physics, and Computer Science." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-      </main>
+      <SearchTable />
     </div>
   )
 }
