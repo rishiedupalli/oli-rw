@@ -24,13 +24,19 @@ export default function Register() {
             alert('You did not confirm the password correctly.')
         }
         try {
-            fetch('/api/route-name', {
+            const res = fetch('/api/route-name', {
                 method: 'POST',
-                body: JSON.stringify(objectWithData),
+                body: {
+                    email: email,
+                    username: username,
+                    password
+                },
               })
         } catch (e) {
             console.log(e)
         }
+
+    }
 
     return (
         <div className=" bg-gray-100">
