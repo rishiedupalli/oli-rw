@@ -9,6 +9,23 @@ export default function Register() {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const body = {
+            email: email,
+            username: username,
+            password: password
+        }
+        console.log(body)
+        const res = await fetch("/api/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body 
+        })
+    }
+
     return (
         <div className=" bg-gray-100">
             <div class="mx-auto my-auto flex items-center justify-center h-screen">
@@ -29,16 +46,16 @@ export default function Register() {
                 <label class="block text-gray-700 text-sm font-bold mb-2" >
                     Password
                 </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setPassword(e.target.value)} id="password" type="password" placeholder="Password"></input>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setPassword(e.target.value)} type="password" placeholder="Password"></input>
                 </div>
                 <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2">
                     Confirm Password
                 </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setConfirmPassword(e.target.value)} id="password" type="password" placeholder="Confirm Password"></input>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password"></input>
                 </div>
                 <div class="flex items-center justify-between">
-                <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleSubmit} type="button">
+                <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleSubmit} type="submit">
                     Register
                 </button>
                 </div>
