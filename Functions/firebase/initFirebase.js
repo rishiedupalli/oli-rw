@@ -18,4 +18,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+console.log("Loaded Firebase")
+
+if (typeof window != "undefined") {
+  if ("measurementId" in  firebaseConfig) {
+    firebaseConfig.analytics()
+  }
+}
 export default app

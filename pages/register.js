@@ -9,35 +9,6 @@ export default function Register() {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if (!validateEmail(email)) {
-            alert('Please enter a valid email address!')
-            
-        }
-        if (!validateUsername()) {
-            alert('Sorry! That username is already taken.')
-        }
-        if (password.length() < 8) {
-            alert('Please create a password longer than 8 characters!')
-        }
-        if (password != confirmPassword) {
-            alert('You did not confirm the password correctly.')
-        }
-        try {
-            const res = fetch('/api/route-name', {
-                method: 'POST',
-                body: {
-                    email: email,
-                    username: username,
-                    password
-                },
-              })
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
     return (
         <div className=" bg-gray-100">
             <div class="mx-auto my-auto flex items-center justify-center h-screen">
