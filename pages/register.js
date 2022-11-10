@@ -1,6 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import Router, { useRouter } from "next/router";
 import { useRef } from "react"
 import validateEmail from "../Functions/auth/validateEmail";
+import { UserContext } from "../Functions/auth/contexts/UserContext";
+import app from "../Functions/firebase/initFirebase"
+import 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, updatePassword, updateProfile } from "firebase/auth";
 
 export default function Register() {
 
@@ -9,22 +14,23 @@ export default function Register() {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
+    const { user, setUser } = useContext(UserContext)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const body = {
-            email: email,
-            username: username,
-            password: password
-        }
-        console.log(body)
-        const res = await fetch("/api/register", {
+        const res = await fetch(`/api/register`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             },
-            body 
+            body: JSON.stringify({ email: email, username: username, password: password })
         })
+        setUser(res)
+        console.log(res)
+        Router = useRouter()
+        Router.push('/dashboard')
     }
+
 
     return (
         <div className=" bg-gray-100">
