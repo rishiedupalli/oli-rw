@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useContext, useState } from "react"
+import login from "../Functions/auth/login";
+import register from "../Functions/auth/register";
 
 export default function LogIn() {
 
@@ -10,7 +12,7 @@ export default function LogIn() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const user = 
+        const user = login(email, password)
         router.push('/dashboard')
     }
 

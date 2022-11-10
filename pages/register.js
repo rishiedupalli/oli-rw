@@ -11,8 +11,6 @@ export default function Register() {
 
     const router = useRouter()
 
-    const { user, setUser } = useContext(UserContext)
-
     const handleSubmit = (e) => {
         e.preventDefault()
         const user = register(email, password, username)
